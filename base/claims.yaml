@@ -1,0 +1,37 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: postgres-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-storage-slow
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: frontend-data-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-storage-slow
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: backend-data-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-storage-slow
+  resources:
+    requests:
+      storage: 1Gi

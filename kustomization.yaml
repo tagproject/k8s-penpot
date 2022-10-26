@@ -1,0 +1,56 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: penpot
+namePrefix: penpot-
+
+images:
+- name: penpotapp/backend
+  newTag: 1.15.4-beta
+- name: penpotapp/frontend
+  newTag: 1.15.4-beta
+- name: penpotapp/exporter
+  newTag: 1.15.4-beta
+- name: postgres
+  newTag: "14.5"
+- name: redis
+  newTag: "7.0.5"
+
+configMapGenerator:
+- name: backend-env
+  literals:
+  - PENPOT_ASSETS_STORAGE_BACKEND=assets-fs
+  - PENPOT_DATABASE_URI=postgresql://postgres/penpot
+  - PENPOT_HTTP_SERVER_HOST=0.0.0.0
+  - PENPOT_REDIS_URI=redis://redis/0
+  - PENPOT_SMTP_DEFAULT_FROM=no-reply@example.com
+  - PENPOT_SMTP_DEFAULT_REPLY_TO=no-reply@example.com
+  - PENPOT_STORAGE_ASSETS_FS_DIRECTORY=/opt/data/assets
+  options:
+    disableNameSuffixHash: true
+    labels:
+      io.penpot.service: backend-env
+- name: frontend-env
+  literals:
+  - PENPOT_FLAGS="disable-registration enable-login disable-email-verification enable-backend-api-docs"
+  - PENPOT_TELEMETRY_ENABLED="false"
+  - PENPOT_PUBLIC_URI=http://localhost:9001
+  options:
+    disableNameSuffixHash: true
+    labels:
+      io.penpot.service: frontend-env
+
+resources:
+  - "./resources/network.yaml"
+  - "./resources/secrets.yaml"
+  - "./resources/deployments/redis.yaml"
+  - "./resources/services/redis.yaml"
+  - "./resources/deployments/postgres.yaml"
+  - "./resources/services/postgres.yaml"
+  - "./resources/deployments/backend.yaml"
+  - "./resources/services/backend.yaml"
+  - "./resources/deployments/exporter.yaml"
+  - "./resources/services/exporter.yaml"
+  - "./resources/deployments/frontend.yaml"
+  - "./resources/services/frontend.yaml"
+  

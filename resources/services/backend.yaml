@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    io.penpot.service: backend
+spec:
+  ports:
+    - name: backend
+      port: 6060
+      targetPort: 6060
+      protocol: TCP
+  selector:
+    io.penpot.service: backend
