@@ -6,8 +6,6 @@ Deploy [Penpot](https://penpot.app/) with ArgoCD and Kustomization.
 
 Changed **default** env:
 
-- PENPOT_DATABASE_URI: `postgresql://postgres/penpot`
-- PENPOT_REDIS_URI: `redis://redis/0`
 - PENPOT_FLAGS: `disable-registration enable-login disable-email-verification enable-backend-api-docs`
   - `disable-registration` - completely disable registration
   - `enable-login` - show login form (don't worry, the registration form is displayed but not working)

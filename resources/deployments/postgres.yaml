@@ -41,7 +41,7 @@ spec:
               name: database-storage
           ports:
             - containerPort: 5432
-              name: postgres
+              name: penpot-postgres
               protocol: TCP
       restartPolicy: Always
       volumes:
