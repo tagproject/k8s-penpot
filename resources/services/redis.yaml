@@ -9,7 +9,7 @@ spec:
   ports:
     - name: redis
       port: 6379
-      targetPort: redis
+      targetPort: penpot-redis
       protocol: TCP
   selector:
     io.penpot.service: redis
