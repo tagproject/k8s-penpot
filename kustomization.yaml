@@ -43,6 +43,7 @@ configMapGenerator:
 resources:
   - "./resources/network.yaml"
   - "./resources/secrets.yaml"
+  - "./resources/claims.yaml"
   - "./resources/deployments/redis.yaml"
   - "./resources/services/redis.yaml"
   - "./resources/deployments/postgres.yaml"
