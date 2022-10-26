@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels:
+    io.penpot.service: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.penpot.service: postgres
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.penpot.network/penpot: "true"
+        io.penpot.service: postgres
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: penpot
+            - name: POSTGRES_INITDB_ARGS
+              value: --data-checksums
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+          image: postgres:14
+          name: postgres
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: database-storage
+          ports:
+            - containerPort: 5432
+              name: postgres
+              protocol: TCP
+      restartPolicy: Always
+      volumes:
+        - name: database-storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc

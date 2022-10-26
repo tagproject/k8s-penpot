@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: exporter
+  labels:
+    io.penpot.service: exporter
+spec:
+  ports:
+    - name: exporter
+      port: 6061
+      targetPort: 6061
+      protocol: TCP
+  selector:
+    io.penpot.service: exporter

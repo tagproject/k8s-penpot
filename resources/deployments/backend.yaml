@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    io.penpot.service: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.penpot.service: backend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.penpot.network/penpot: "true"
+        io.penpot.service: backend
+    spec:
+      containers:
+        - env:
+            - name: PENPOT_DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: username
+            - name: PENPOT_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+          image: penpotapp/backend:latest
+          name: backend
+          envFrom:
+          - configMapRef:
+              name: backend-env
+          - configMapRef:
+              name: frontend-env
+          ports:
+            - containerPort: 6060
+              name: backend
+          volumeMounts:
+            - mountPath: /opt/data
+              name: data-storage
+      restartPolicy: Always
+      volumes:
+        - name: data-storage
+          persistentVolumeClaim:
+            claimName: backend-data-pvc

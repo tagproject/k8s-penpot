@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exporter
+  labels:
+    io.penpot.service: exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.penpot.service: exporter
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.penpot.network/penpot: "true"
+        io.penpot.service: exporter
+    spec:
+      containers:
+        - env:
+            - name: PENPOT_PUBLIC_URI
+              valueFrom:
+                configMapKeyRef:
+                  key: PENPOT_PUBLIC_URI
+                  name: frontend-env
+          image: penpotapp/exporter:latest
+          name: exporter
+          ports:
+            - containerPort: 6061
+              name: exporter
+      restartPolicy: Always

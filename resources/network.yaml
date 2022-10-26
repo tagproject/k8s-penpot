@@ -1,0 +1,14 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              io.penpot.network/penpot: "true"
+  podSelector:
+    matchLabels:
+      io.penpot.network/penpot: "true"
