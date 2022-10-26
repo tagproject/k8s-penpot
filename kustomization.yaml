@@ -20,9 +20,9 @@ configMapGenerator:
 - name: backend-env
   literals:
   - PENPOT_ASSETS_STORAGE_BACKEND=assets-fs
-  - PENPOT_DATABASE_URI=postgresql://postgres/penpot
+  - PENPOT_DATABASE_URI=postgresql://penpot-postgres/penpot
   - PENPOT_HTTP_SERVER_HOST=0.0.0.0
-  - PENPOT_REDIS_URI=redis://redis/0
+  - PENPOT_REDIS_URI=redis://penpot-redis/0
   - PENPOT_SMTP_DEFAULT_FROM=no-reply@example.com
   - PENPOT_SMTP_DEFAULT_REPLY_TO=no-reply@example.com
   - PENPOT_STORAGE_ASSETS_FS_DIRECTORY=/opt/data/assets
