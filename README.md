@@ -39,9 +39,9 @@ namePrefix: penpot-
 
 In my case i have `PersistentVolumes` by `1Gi`, `5Gi`, `10Gi` and `20Gi`. You can describe you own `PersistentVolumesClaims`:
 
-- persistentvolumeclaim/postgres-pvc - `20Gi`
-- persistentvolumeclaim/frontend-data-pvc - `1Gi`
-- persistentvolumeclaim/backend-data-pvc - `1Gi`
+- persistentvolumeclaim/penpot-postgres-pvc - `20Gi`
+- persistentvolumeclaim/penpot-frontend-data-pvc - `1Gi`
+- persistentvolumeclaim/penpot-backend-data-pvc - `1Gi`
 
 ### Change database username and password:
 
@@ -57,7 +57,9 @@ Install ArgoCD and download ArgoCD CLI, see [getting started section](https://ar
 
 ```sh
 argocd app create penpot \
+  --project default \
   --repo https://github.com/tagproject/k8s-penpot.git \
+  --path ./ \
   --dest-server https://kubernetes.default.svc \
   --dest-namespace penpot \
   --sync-policy automated
