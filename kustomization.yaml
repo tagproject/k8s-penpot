@@ -19,7 +19,7 @@ images:
 configMapGenerator:
 - name: backend-env
   literals:
-  - PENPOT_ASSETS_STORAGE_BACKEND=assets-fs
+  - PENPOT_ASSETS_STORAGE_BACKEND=assets-db
   - PENPOT_DATABASE_URI=postgresql://penpot-postgres/penpot
   - PENPOT_HTTP_SERVER_HOST=0.0.0.0
   - PENPOT_REDIS_URI=redis://penpot-redis/0
@@ -32,7 +32,7 @@ configMapGenerator:
       io.penpot.service: backend-env
 - name: frontend-env
   literals:
-  - PENPOT_FLAGS="disable-registration enable-login disable-email-verification enable-backend-api-docs"
+  - PENPOT_FLAGS="enable-registration enable-login disable-email-verification enable-backend-api-docs"
   - PENPOT_TELEMETRY_ENABLED="false"
   - PENPOT_PUBLIC_URI=http://localhost:9001
   options:
@@ -41,6 +41,7 @@ configMapGenerator:
       io.penpot.service: frontend-env
 
 resources:
+  - "./resources/namespace.yaml"
   - "./resources/network.yaml"
   - "./resources/secrets.yaml"
   - "./resources/claims.yaml"
