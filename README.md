@@ -6,6 +6,7 @@ Deploy [Penpot](https://penpot.app/) with ArgoCD and Kustomization.
 
 Changed **default** env:
 
+- PENPOT_ASSETS_STORAGE_BACKEND: `assets-db` - stores them inside the PostgreSQL database, in a special table with a binary column.
 - PENPOT_FLAGS: `disable-registration enable-login disable-email-verification enable-backend-api-docs`
   - `disable-registration` - completely disable registration
   - `enable-login` - show login form (don't worry, the registration form is displayed but not working)
@@ -14,19 +15,6 @@ Changed **default** env:
 > see more in [Advanced Configuration](https://help.penpot.app/technical-guide/configuration/)
 
 ## Prepare
-
-### Append namespace and claims:
-
-```sh
-kubectl apply -f ./base
-
-# output:
-# persistentvolumeclaim/postgres-pvc created
-# persistentvolumeclaim/frontend-data-pvc created
-# persistentvolumeclaim/backend-data-pvc created
-# namespace/penpot created
-
-```
 
 In manifest use `namespace: penpot` and `namePrefix: penpot-`, you can change it in `kustomization.yaml`:
 
@@ -61,5 +49,11 @@ argocd app create penpot \
   --dest-server https://kubernetes.default.svc \
   --dest-namespace penpot \
   --sync-policy automated
-
 ```
+
+<details>
+<summary>After synchronization, you will see something like this in ArgoCD UI</summary>
+
+![image info](./media/screenshots/penpot-argocd-sync.png)
+
+</details>

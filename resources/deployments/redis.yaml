@@ -22,5 +22,5 @@ spec:
           name: redis
           ports:
             - containerPort: 6379
-              name: penpot-redis
+              name: redis
       restartPolicy: Always
