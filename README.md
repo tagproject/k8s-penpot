@@ -57,3 +57,14 @@ argocd app create penpot \
 ![image info](./media/screenshots/penpot-argocd-sync.png)
 
 </details>
+
+Get `penpot-frontend` `EXTERNAL-IP` and open Penpot UI with you IP `http://192.168.0.x:9001`:
+
+```sh
+kubectl get svc/penpot-frontend -n penpot
+```
+
+|                 |              |            |             |                |     |
+| --------------- | ------------ | ---------- | ----------- | -------------- | --- |
+| NAME            | TYPE         | CLUSTER-IP | EXTERNAL-IP | PORT(S)        | AGE |
+| penpot-frontend | LoadBalancer | 10.233.x.x | 192.168.0.x | 9001:30330/TCP | 1m  |
