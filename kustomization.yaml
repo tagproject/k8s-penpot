@@ -32,7 +32,7 @@ configMapGenerator:
       io.penpot.service: backend-env
 - name: frontend-env
   literals:
-  - PENPOT_FLAGS="enable-registration enable-login disable-email-verification enable-backend-api-docs"
+  - PENPOT_FLAGS="enable-insecure-register enable-registration enable-login disable-email-verification"
   - PENPOT_TELEMETRY_ENABLED="false"
   - PENPOT_PUBLIC_URI=http://localhost:9001
   options:
