@@ -6,6 +6,7 @@ Deploy [Penpot](https://penpot.app/) with ArgoCD and Kustomization.
 
 Changed **default** env:
 
+- PENPOT_PUBLIC_URI=http://localhost:80 - frontend port changed from `9001` to `80`
 - PENPOT_ASSETS_STORAGE_BACKEND: `assets-db` - stores them inside the PostgreSQL database, in a special table with a binary column.
 - PENPOT_FLAGS: `disable-registration enable-login disable-email-verification enable-backend-api-docs`
   - `disable-registration` - completely disable registration
@@ -58,13 +59,13 @@ argocd app create penpot \
 
 </details>
 
-Get `penpot-frontend` `EXTERNAL-IP` and open Penpot UI with you IP `http://192.168.0.x:9001`:
+Get `penpot-frontend` `EXTERNAL-IP` and open Penpot UI with you IP `http://192.168.0.x:80`:
 
 ```sh
 kubectl get svc/penpot-frontend -n penpot
 ```
 
-|                 |              |            |             |                |     |
-| --------------- | ------------ | ---------- | ----------- | -------------- | --- |
-| NAME            | TYPE         | CLUSTER-IP | EXTERNAL-IP | PORT(S)        | AGE |
-| penpot-frontend | LoadBalancer | 10.233.x.x | 192.168.0.x | 9001:30330/TCP | 1m  |
+|                 |              |            |             |              |     |
+| --------------- | ------------ | ---------- | ----------- | ------------ | --- |
+| NAME            | TYPE         | CLUSTER-IP | EXTERNAL-IP | PORT(S)      | AGE |
+| penpot-frontend | LoadBalancer | 10.233.x.x | 192.168.0.x | 80:30330/TCP | 1m  |

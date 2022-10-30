@@ -1,0 +1,10 @@
+.editorconfig
+.env
+.prettierignore
+.prettierrc
+.vscode
+CODE_OF_CONDUCT.md
+SECURITY.md
+docs/
+example/
+media/
