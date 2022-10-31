@@ -34,7 +34,7 @@ configMapGenerator:
 - name: frontend-env
   literals:
   - PENPOT_FLAGS="disable-secure-session-cookies disable-insecure-register disable-registration enable-login disable-email-verification enable-backend-api-docs"
-  - PENPOT_TELEMETRY_ENABLED="false"  
+  - PENPOT_TELEMETRY_ENABLED="false"
   options:
     disableNameSuffixHash: true
     labels:
@@ -44,7 +44,6 @@ resources:
   - "./resources/namespace.yaml"
   - "./resources/network.yaml"
   - "./resources/secrets.yaml"
-  - "./resources/claims.yaml"
   - "./resources/deployments/redis.yaml"
   - "./resources/services/redis.yaml"
   - "./resources/deployments/postgres.yaml"
@@ -55,4 +54,4 @@ resources:
   - "./resources/services/exporter.yaml"
   - "./resources/deployments/frontend.yaml"
   - "./resources/services/frontend.yaml"
-  
+
