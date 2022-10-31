@@ -33,4 +33,4 @@ spec:
       volumes:
         - name: data-storage
           persistentVolumeClaim:
-            claimName: frontend-data-pvc
+            claimName: local-path-pvc
