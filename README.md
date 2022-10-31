@@ -24,11 +24,11 @@ namespace: penpot
 namePrefix: penpot-
 ```
 
-In my case i have `PersistentVolumes` by `1Gi`, `5Gi`, `10Gi` and `20Gi`. You can describe you own `PersistentVolumesClaims`:
+In my case i have [Rancher Local Path Provisioner](https://github.com/rancher/local-path-provisioner). You can describe you own `PersistentVolumesClaims`:
 
 - persistentvolumeclaim/penpot-postgres-pvc - `20Gi`
-- persistentvolumeclaim/penpot-frontend-data-pvc - `1Gi`
-- persistentvolumeclaim/penpot-backend-data-pvc - `1Gi`
+- persistentvolumeclaim/penpot-frontend-data-pvc - `128Mi`
+- persistentvolumeclaim/penpot-backend-data-pvc - `128Mi`
 
 ### Change database username and password:
 
