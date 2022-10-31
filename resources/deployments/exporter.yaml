@@ -23,7 +23,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: PENPOT_PUBLIC_URI
-                  name: frontend-env
+                  name: backend-env
           image: penpotapp/exporter:latest
           name: exporter
           ports:

@@ -47,4 +47,4 @@ spec:
       volumes:
         - name: database-storage
           persistentVolumeClaim:
-            claimName: postgres-pvc
+            claimName: local-path-pvc

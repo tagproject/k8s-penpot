@@ -11,6 +11,6 @@ spec:
     io.penpot.service: frontend
   ports:
     - name: frontend
-      port: 9001
+      port: 80
       targetPort: 80
       protocol: TCP

@@ -1,0 +1,7 @@
+.env
+/.editorconfig
+/.prettierignore
+/.prettierrc
+/.vscode/
+node_modules/
+tmp/
