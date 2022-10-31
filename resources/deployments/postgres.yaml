@@ -43,6 +43,15 @@ spec:
             - containerPort: 5432
               name: postgres
               protocol: TCP
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limit:
+              cpu: 300m
+              memory: 512Mi
+          securityContext:
+            allowPrivilegeEscalation: false
       restartPolicy: Always
       volumes:
         - name: database-storage

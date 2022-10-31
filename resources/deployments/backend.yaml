@@ -43,6 +43,15 @@ spec:
           volumeMounts:
             - mountPath: /opt/data
               name: data-storage
+          resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
+            limit:
+              cpu: 200m
+              memory: 1024Mi
+          securityContext:
+            allowPrivilegeEscalation: false
       restartPolicy: Always
       volumes:
         - name: data-storage
