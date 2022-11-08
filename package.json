@@ -1,6 +1,6 @@
 {
   "name": "k8s-penpot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Deploy Penpot with ArgoCD and Kustomization",
   "license": "MIT",
   "homepage": "https://github.com/tagproject/k8s-penpot#readme",
@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@tagproject/docs-shared-config": "^1.0.4",
-    "@tagproject/k8s-manifest-shared-config": "^1.2.1",
+    "@tagproject/k8s-manifest-shared-config": "^1.2.2",
     "@tagproject/vscode-shared-config": "^2.0.2",
     "changelog-guru": "^4.0.6",
     "cspell": "^6.14.1",

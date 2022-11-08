@@ -17,42 +17,18 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  config:
-    name: Configure
-    runs-on: ubuntu-latest
-    outputs:
-      config: ${{ steps.set-config.outputs.config }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-
-      - name: Create config
-        id: set-config
-        run: |
-          echo Node: $(node -v)
-          echo NPM: $(npm -v)
-          npm i semver --no-package-lock
-          CONFIG=$(node ./.github/scripts/config.js | sed 's/ //g')
-          echo "config=$CONFIG" >> $GITHUB_OUTPUT
-          echo $CONFIG
-
   release:
     name: Create Release
-    needs: [ config ]
-    env:
-      NODE_VERSION: ${{ fromJson(needs.config.outputs.config).node.main.version }}
+    needs: [ sync ]
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Use Node.js ${{ env.NODE_VERSION }}
+    - name: Use Node.js 18.x
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ env.NODE_VERSION }}
+        node-version: 18
 
     - name: Get package version
       run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
