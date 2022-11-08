@@ -1,0 +1,18 @@
+workflow:
+  - .github/**/*
+  - .gitignore
+  - .npmignore
+
+project:
+  - package-lock.json
+  - package.json
+  - LICENSE
+
+cluster:
+  - any: ['kustomization.yaml', 'resources/**/*.yaml', 'resources/**/*.yml']
+
+docs:
+  - any: ['docs/**/*', '*.md', '.ghinfo']
+
+media:
+  - media/**/*
