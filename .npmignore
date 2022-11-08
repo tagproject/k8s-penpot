@@ -1,5 +1,9 @@
+.config
 .editorconfig
 .env
+.gitattributes
+.github
+.husky
 .prettierignore
 .prettierrc
 .vscode
@@ -8,3 +12,4 @@ SECURITY.md
 docs/
 example/
 media/
+node_modules/
