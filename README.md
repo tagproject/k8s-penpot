@@ -40,7 +40,7 @@ password: penpot
 
 ## Deploy Penpot application with ArgoCD
 
-Install ArgoCD and download ArgoCD CLI, see [getting started section](https://argo-cd.readthedocs.io/en/stable/getting_started/).
+Install ArgoCD and ArgoCD CLI, see [getting started section](https://argo-cd.readthedocs.io/en/stable/getting_started/). After login in cli execute `app creation` with your parameters:
 
 ```sh
 argocd app create penpot \

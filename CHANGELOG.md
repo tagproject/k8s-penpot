@@ -1,13 +1,6 @@
-# Important Changes
+# :memo: Internal changes
 
-## Dependencies
-
-<details>
-<summary>Dev Dependencies</summary>
-
-- Changed **[@tagproject/k8s-manifest-shared-config](https://www.npmjs.com/package/@tagproject/k8s-manifest-shared-config)** from `^1.2.1` to `^1.2.2`
-
-</details>
+- Fix deploy desc [`7913b99`](https://github.com/tagproject/k8s-penpot/commit/7913b996d93660a3125f474cdd0f8786174bf6e6)
 
 ---
 
