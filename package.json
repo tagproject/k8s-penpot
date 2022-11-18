@@ -37,7 +37,7 @@
     "release": "npm-run-all prepare lint generate"
   },
   "devDependencies": {
-    "@tagproject/docs-shared-config": "^1.0.4",
+    "@tagproject/docs-shared-config": "^1.1.1",
     "@tagproject/k8s-manifest-shared-config": "^1.2.2",
     "@tagproject/vscode-shared-config": "^2.0.2",
     "changelog-guru": "^4.0.6",
