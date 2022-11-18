@@ -39,7 +39,7 @@
   "devDependencies": {
     "@tagproject/docs-shared-config": "^1.0.4",
     "@tagproject/k8s-manifest-shared-config": "^1.2.2",
-    "@tagproject/vscode-shared-config": "^2.0.2",
+    "@tagproject/vscode-shared-config": "^2.0.4",
     "changelog-guru": "^4.0.6",
     "cspell": "^6.14.1",
     "husky": "^8.0.2",
