@@ -1,6 +1,6 @@
 {
   "name": "k8s-penpot",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Deploy Penpot with ArgoCD and Kustomization",
   "license": "MIT",
   "homepage": "https://github.com/tagproject/k8s-penpot#readme",
